@@ -1,18 +1,27 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/screens/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Fredericka_the_Great/FrederickatheGreat-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/bird-brown-fat.png" type="Texture" id=3]
-[ext_resource path="res://assets/bird-yellow-fat.png" type="Texture" id=4]
-[ext_resource path="res://assets/bird-blue-fat.png" type="Texture" id=5]
+[ext_resource path="res://assets/fonts/Overpass/Overpass-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/fonts/Overpass/Overpass-Black.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 18
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
 size = 75
 font_data = ExtResource( 2 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -1.33484
+margin_right = -1.33484
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -32,17 +41,18 @@ __meta__ = {
 }
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
-margin_right = 146.0
-margin_bottom = 20.0
+margin_right = 164.0
+margin_bottom = 54.0
+custom_fonts/font = SubResource( 1 )
 text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 24.0
-margin_right = 146.0
-margin_bottom = 64.0
+margin_top = 100.0
+margin_right = 164.0
+margin_bottom = 98.0
 
 [node name="FullscreenToggle" type="CheckButton" parent="VBoxContainer/HBoxContainer"]
 margin_right = 76.0
@@ -53,9 +63,10 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
 margin_left = 80.0
-margin_top = 13.0
-margin_right = 146.0
-margin_bottom = 27.0
+margin_top = 10.0
+margin_right = 164.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 2 )
 text = "Fullscreen"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -74,24 +85,12 @@ anchor_right = 0.5
 margin_left = -232.0
 margin_right = 233.0
 margin_bottom = 302.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Hangry Birds"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="bird-blue-fat" type="Sprite" parent="."]
-position = Vector2( 171.789, 391.105 )
-texture = ExtResource( 5 )
-
-[node name="bird-yellow-fat" type="Sprite" parent="."]
-position = Vector2( 460.211, 445.842 )
-texture = ExtResource( 4 )
-
-[node name="bird-brown-fat" type="Sprite" parent="."]
-position = Vector2( 447.579, 287.947 )
-texture = ExtResource( 3 )
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer/FullscreenToggle" to="." method="_on_FullscreenToggle_toggled"]

@@ -19,12 +19,15 @@ var _seconds : float = 0
 var gameover := false
 
 onready var _crumbs = $Crumbs
+onready var _feeding : AudioStreamPlayer = $Feeding
 onready var _crumbs_label = $Control/Label
 onready var _waves_completed_label : Label = $EndGameMessage/WavesCompleted
 onready var _game_over_ui : Node = $EndGameMessage
 onready var _crumbs_progress : ProgressBar = $Control/ProgressBar
+onready var _thrower : AnimationPlayer = $guy/AnimationPlayer
+onready var _guy :Sprite = $guy
 # The node whose location the crumbs spawn from
-onready var _hand : Node2D = $Hand
+onready var _hand : Node2D = $guy/Hand
 onready var _wave_label : Label = $WaveLabel
 onready var _birds_node = $Birds
 
@@ -58,6 +61,8 @@ func _input(event):
 
 
 func _throw_crumbs():
+	_thrower.play("Throw")
+	_feeding.play()
 	for _x in range(_crumbs_to_throw()):
 		var crumb : Crumb = _Crumb.instance()
 		crumb.on_ground = false
@@ -107,3 +112,7 @@ func game_over():
 
 func _on_MainMenuButton_pressed():
 	var _ignored = get_tree().change_scene("res://src/screens/MainMenu.tscn")
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	_thrower.play("Idle")

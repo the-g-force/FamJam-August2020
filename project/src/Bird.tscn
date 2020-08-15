@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/Bird.gd" type="Script" id=1]
 [ext_resource path="res://assets/bird-yellow.png" type="Texture" id=2]
@@ -6,6 +6,12 @@
 [ext_resource path="res://assets/bird-brown.png" type="Texture" id=4]
 [ext_resource path="res://assets/bird-yellow-med.png" type="Texture" id=5]
 [ext_resource path="res://assets/bird-yellow-thin.png" type="Texture" id=6]
+[ext_resource path="res://assets/bird-blue-thin.png" type="Texture" id=7]
+[ext_resource path="res://assets/bird-blue-med.png" type="Texture" id=8]
+[ext_resource path="res://assets/bird-brown-thin.png" type="Texture" id=9]
+[ext_resource path="res://assets/bird-brown-med.png" type="Texture" id=10]
+[ext_resource path="res://assets/sounds/peck2.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/sounds/peck1.wav" type="AudioStream" id=12]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -21,27 +27,22 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
+"name": "22",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "10",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "03",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
 "name": "20",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "13",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "00",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "01",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "11",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
@@ -49,19 +50,14 @@ animations = [ {
 "name": "23",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "10",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "22",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 10 ) ],
 "loop": true,
 "name": "21",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "00",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
@@ -69,9 +65,19 @@ animations = [ {
 "name": "02",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "03",
+"name": "01",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "11",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "13",
 "speed": 5.0
 } ]
 
@@ -92,3 +98,11 @@ shape = SubResource( 2 )
 rotation = 1.5708
 frames = SubResource( 3 )
 animation = "23"
+
+[node name="Eating0" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+volume_db = 10.0
+
+[node name="Eating1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
+volume_db = 10.0
