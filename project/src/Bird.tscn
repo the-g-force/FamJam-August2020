@@ -17,14 +17,19 @@ animations = [ {
 "name": "12",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "22",
+"name": "02",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "13",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "02",
+"name": "03",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
@@ -47,21 +52,6 @@ animations = [ {
 "name": "11",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "03",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "13",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "21",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "23",
@@ -70,6 +60,16 @@ animations = [ {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "10",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "22",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "21",
 "speed": 5.0
 } ]
 
@@ -87,5 +87,6 @@ shape = SubResource( 1 )
 shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+rotation = 1.5708
 frames = SubResource( 3 )
 animation = "23"

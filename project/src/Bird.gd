@@ -34,6 +34,7 @@ func _process(delta:float):
 					target = crumb
 					break
 		var direction = (destination - position).normalized()
+		rotation = direction.angle()
 		if (destination - position).length_squared() < 5:
 			if target != null:
 				target.queue_free()
@@ -55,6 +56,7 @@ func _process(delta:float):
 	if state == State.FLYING:
 		var dir = Vector2(1,0)
 		var velocity = dir*speed
+		rotation = dir.angle()
 		if position.x > middle_of_screen.x*2:
 			queue_free()
 		var _error = move_and_collide(velocity*delta)
