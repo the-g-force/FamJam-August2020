@@ -10,8 +10,10 @@ func _ready():
 
 func _process(delta:float):
 	var crumbs = $Sensor.get_overlapping_areas()
-	if crumbs.size() > 0:
-		destination = crumbs[0].get_global_position()
+	for crumb in crumbs:
+		if crumb.on_ground:
+			destination = crumb.get_global_position()
+			break
 	var direction = (destination - position).normalized()
 	var velocity = direction*speed
 	var _error = move_and_collide(velocity*delta)
