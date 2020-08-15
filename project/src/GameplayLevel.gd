@@ -107,7 +107,10 @@ func game_over():
 	_game_over_ui.show()
 	_waves_completed_label.text = "You fed " + str(difficulty_level-1) + \
 	(" flock!" if difficulty_level-1 == 1 else " flocks!")
-	gameover = true
+	if not gameover:
+		gameover = true
+		_pressed = false
+		_throw_crumbs()
 
 
 func _on_MainMenuButton_pressed():
