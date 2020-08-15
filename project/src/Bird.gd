@@ -1,7 +1,7 @@
 class_name Bird
 extends KinematicBody2D
 
-enum State {EATING, WALKING}
+enum State {EATING, WALKING, FLYING}
 export var speed : int = 100
 
 var target
@@ -11,6 +11,7 @@ var middle_of_screen : Vector2
 var destination : Vector2
 
 signal game_over
+signal fed
 
 func _ready():
 	middle_of_screen = get_viewport_rect().size/2
@@ -34,12 +35,22 @@ func _process(delta:float):
 				state = State.EATING
 				yield(get_tree().create_timer(0.5), "timeout")
 				crumbs_eaten += 1
-				state = State.WALKING
+				if crumbs_eaten < 3:
+					state = State.WALKING
+				else:
+					state = State.FLYING
+					emit_signal("fed")
 			if destination == middle_of_screen:
 				emit_signal("game_over")
 		var velocity = direction*speed
 		var _error = move_and_collide(velocity*delta)
-		update()
+	if state == State.FLYING:
+		var dir = Vector2(1,0)
+		var velocity = dir*speed
+		if position.x > middle_of_screen.x*2:
+			queue_free()
+		var _error = move_and_collide(velocity*delta)
+	update()
 
 
 func _draw():
