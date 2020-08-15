@@ -71,13 +71,35 @@ anims/WaveLabelPulse = SubResource( 1 )
 
 [node name="Birds" type="Node" parent="."]
 
-[node name="GameOver" type="Label" parent="."]
+[node name="EndGameMessage" type="Node2D" parent="."]
 visible = false
+
+[node name="GameOver" type="Label" parent="EndGameMessage"]
 margin_left = 272.0
 margin_top = 144.0
 margin_right = 346.0
 margin_bottom = 158.0
 text = "Game OVer"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClickForMenu" type="Label" parent="EndGameMessage"]
+margin_left = 184.0
+margin_top = 168.0
+margin_right = 433.0
+margin_bottom = 182.0
+text = "click anywhere to go to the main menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOver3" type="Label" parent="EndGameMessage"]
+margin_left = 272.0
+margin_top = 120.0
+margin_right = 346.0
+margin_bottom = 134.0
+text = "Game Over"
 __meta__ = {
 "_edit_use_anchors_": false
 }

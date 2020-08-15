@@ -20,7 +20,8 @@ var gameover := false
 
 onready var _crumbs = $Crumbs
 onready var _crumbs_label = $Control/Label
-onready var _GameOverLabel : Label = $GameOver
+onready var _GameOverLabel : Label = $EndGameMessage/GameOver
+onready var _GameOverMessage : Node2D = $EndGameMessage
 onready var _crumbs_progress : ProgressBar = $Control/ProgressBar
 # The node whose location the crumbs spawn from
 onready var _hand : Node2D = $Hand
@@ -100,6 +101,7 @@ func spawn_wave():
 
 
 func game_over():
-	_GameOverLabel.show()
-	_GameOverLabel.text = "Game Over! \n You fed " + str(difficulty_level) + (" flock!" if difficulty_level == 1 else " flocks!")
+	_GameOverMessage.show()
+	_GameOverLabel.text = "You fed " + str(difficulty_level) + \
+	(" flock!" if difficulty_level == 1 else " flocks!")
 	gameover = true
