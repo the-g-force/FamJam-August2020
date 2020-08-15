@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/GameplayLevel.gd" type="Script" id=1]
 [ext_resource path="res://assets/food-grapes.png" type="Texture" id=2]
@@ -9,22 +9,56 @@
 [ext_resource path="res://assets/fonts/Overpass/Overpass-BlackItalic.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/fonts/Overpass/Overpass-Regular.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://assets/fonts/Overpass/Overpass-Italic.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://assets/sounds/feeding.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/guy.png" type="Texture" id=11]
+[ext_resource path="res://assets/forearm.png" type="Texture" id=12]
+[ext_resource path="res://assets/player.png" type="Texture" id=13]
+
+[sub_resource type="Animation" id=9]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("forearm:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 82.7171 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Throw"
+tracks/0/type = "value"
+tracks/0/path = NodePath("forearm:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 158.366, 41.567 ]
+}
 
 [sub_resource type="DynamicFont" id=1]
 size = 36
 font_data = ExtResource( 6 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 1, 0.866667, 0, 1 )
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.305882, 0.588235, 0.32549, 1 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 48
 font_data = ExtResource( 7 )
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=5]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveLabel:modulate")
@@ -70,6 +104,29 @@ texture = ExtResource( 3 )
 position = Vector2( -40, -24 )
 texture = ExtResource( 2 )
 
+[node name="guy" type="Sprite" parent="."]
+position = Vector2( 312, 376 )
+texture = ExtResource( 11 )
+
+[node name="Hand" type="Node2D" parent="guy"]
+position = Vector2( 40, -48 )
+rotation = -0.0717808
+
+[node name="forearm" type="Sprite" parent="guy"]
+position = Vector2( 23.693, 5.29578 )
+rotation = 0.725481
+texture = ExtResource( 12 )
+offset = Vector2( -6.32465, -26.9742 )
+
+[node name="Hat" type="Sprite" parent="guy"]
+position = Vector2( 0, 8 )
+rotation = -0.0423071
+texture = ExtResource( 13 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="guy"]
+anims/Idle = SubResource( 9 )
+anims/Throw = SubResource( 10 )
+
 [node name="Crumbs" type="Node" parent="."]
 
 [node name="Control" type="Control" parent="."]
@@ -98,23 +155,20 @@ margin_left = -27.5026
 margin_top = -10.4648
 margin_right = 119.497
 margin_bottom = 32.5352
-custom_styles/fg = SubResource( 3 )
-custom_styles/bg = SubResource( 4 )
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
 max_value = 1.0
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Hand" type="Node2D" parent="."]
-position = Vector2( 305.47, 315.37 )
-
 [node name="WaveLabel" type="Label" parent="."]
 margin_left = 222.803
 margin_top = 353.07
 margin_right = 382.803
 margin_bottom = 401.07
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.933333, 0.956863, 0.917647, 1 )
 text = "Wave N"
 align = 1
@@ -123,7 +177,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/WaveLabelPulse = SubResource( 2 )
+anims/WaveLabelPulse = SubResource( 5 )
 
 [node name="Birds" type="Node" parent="."]
 
@@ -167,4 +221,8 @@ text = "Return to Main Menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Feeding" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+[connection signal="animation_finished" from="guy/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="pressed" from="EndGameMessage/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
