@@ -9,6 +9,8 @@ export var toss_duration := 1.1
 export var crumbs_load_rate : float = 0.5
 # How wide does a cluster of crumbs spread?
 export var crumbs_spread_radius : float = 20
+# How far from the center does a bird spawn?
+export var spawn_radius : float = 350
 
 var _pressed := false
 var difficulty_level := 1
@@ -88,8 +90,7 @@ func spawn_wave():
 		var bird:Bird = _Bird.instance()
 		var _error = bird.connect("game_over", self, "game_over")
 		var _error2 = bird.connect("fed", self, "reduce_bird_count")
-		_birdspawnlocation.offset = randi()
-		bird.position = _birdspawnlocation.position
+		bird.position = Vector2(300,300) + Vector2(spawn_radius,0).rotated(randf()*PI*2)
 		add_child(bird)
 
 
