@@ -20,7 +20,6 @@ var _seconds : float = 0
 onready var _crumbs = $Crumbs
 onready var _crumbs_label = $Control/Label
 onready var _crumbs_progress : ProgressBar = $Control/ProgressBar
-onready var _birdspawnlocation : PathFollow2D = $Path2D/PathFollow2D
 # The node whose location the crumbs spawn from
 onready var _hand : Node2D = $Hand
 onready var _wave_label : Label = $WaveLabel
@@ -54,7 +53,6 @@ func _input(event):
 
 
 func _throw_crumbs():
-	var crumbs_to_throw := _crumbs_to_throw()
 	for _x in range(_crumbs_to_throw()):
 		var crumb : Crumb = _Crumb.instance()
 		crumb.on_ground = false
