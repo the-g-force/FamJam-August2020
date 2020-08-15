@@ -1,23 +1,34 @@
 extends KinematicBody2D
 
+enum State {EATING, WALKING}
 export var speed : int = 200
 
+var target
+var state = State.WALKING
+var crumbs_eaten := 0
 var destination : Vector2
 
-func _ready():
-	destination = get_viewport_rect().size/2
-
-
 func _process(delta:float):
-	var crumbs = $Sensor.get_overlapping_areas()
-	for crumb in crumbs:
-		if crumb.on_ground:
-			destination = crumb.get_global_position()
-			break
-	var direction = (destination - position).normalized()
-	var velocity = direction*speed
-	var _error = move_and_collide(velocity*delta)
-	update()
+	if state == State.WALKING:
+		destination = get_viewport_rect().size/2
+		var crumbs = $Sensor.get_overlapping_areas()
+		for crumb in crumbs:
+			if crumb.on_ground:
+				destination = crumb.get_global_position()
+				target = crumb
+				break
+		var direction = (destination - position).normalized()
+		if (destination - position).length_squared() < 5:
+			if target != null:
+				target.queue_free()
+				target = null
+				state = State.EATING
+				yield(get_tree().create_timer(0.5), "timeout")
+				crumbs_eaten += 1
+				state = State.WALKING
+		var velocity = direction*speed
+		var _error = move_and_collide(velocity*delta)
+		update()
 
 
 func _draw():
