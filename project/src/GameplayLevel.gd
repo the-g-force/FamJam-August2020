@@ -23,7 +23,6 @@ onready var _birdspawnlocation : PathFollow2D = $Path2D/PathFollow2D
 onready var _hand : Node2D = $Hand
 
 func _ready():
-	randomize()
 	spawn_wave()
 
 
