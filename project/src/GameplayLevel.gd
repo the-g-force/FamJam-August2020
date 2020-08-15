@@ -53,7 +53,9 @@ func _input(event):
 				_pressed = true
 				_seconds = 0
 			else:
-				get_tree().change_scene("res://src/screens/MainMenu.tscn")
+				_pressed = false
+				_throw_crumbs()
+				var _error = get_tree().change_scene("res://src/screens/MainMenu.tscn")
 		elif not gameover:
 			_pressed = false
 			_throw_crumbs()
