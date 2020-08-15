@@ -2,10 +2,11 @@ class_name Bird
 extends KinematicBody2D
 
 enum State {EATING, WALKING, FLYING}
-export var speed : int = 100
+export var speed : int = 25
 
 var target
 var state = State.WALKING
+var size := 10
 var crumbs_eaten := 0
 var middle_of_screen : Vector2
 var destination : Vector2
@@ -35,10 +36,13 @@ func _process(delta:float):
 				state = State.EATING
 				yield(get_tree().create_timer(0.5), "timeout")
 				crumbs_eaten += 1
+				speed -= 5
+				size += 2
 				if crumbs_eaten < 3:
 					state = State.WALKING
 				else:
 					state = State.FLYING
+					speed = 100
 					emit_signal("fed")
 			if destination == middle_of_screen:
 				emit_signal("game_over")
@@ -54,5 +58,5 @@ func _process(delta:float):
 
 
 func _draw():
-	draw_circle(Vector2.ZERO, 10, Color.azure)
+	draw_circle(Vector2.ZERO, size, Color.azure)
 

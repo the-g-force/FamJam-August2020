@@ -13,6 +13,7 @@ export var crumbs_spread_radius : float = 20
 
 var _pressed := false
 var difficulty_level := 1
+var bird_count := 0
 var _seconds : float = 0
 
 onready var _crumbs = $Crumbs
@@ -22,12 +23,7 @@ onready var _birdspawnlocation : PathFollow2D = $Path2D/PathFollow2D
 
 func _ready():
 	randomize()
-	for _x in difficulty_level*3:
-		var bird:Bird = _Bird.instance()
-		var _error = bird.connect("game_over", self, "game_over")
-		_birdspawnlocation.offset = randi()
-		bird.position = _birdspawnlocation.position
-		add_child(bird)
+	spawn_wave()
 
 
 func _process(delta):
@@ -74,6 +70,24 @@ func _throw_crumbs():
 func _on_tween_complete(tween:Tween, crumb:Crumb):
 	crumb.on_ground = true
 	tween.queue_free()
+
+
+func reduce_bird_count():
+	bird_count -= 1
+	if bird_count == 0:
+		difficulty_level += 1
+		spawn_wave()
+
+func spawn_wave():
+	for _x in difficulty_level*3:
+		bird_count += 1
+		var bird:Bird = _Bird.instance()
+		var _error = bird.connect("game_over", self, "game_over")
+		var _error2 = bird.connect("fed", self, "reduce_bird_count")
+		_birdspawnlocation.offset = randi()
+		bird.position = _birdspawnlocation.position
+		add_child(bird)
+
 
 
 func game_over():
