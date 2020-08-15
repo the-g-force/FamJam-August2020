@@ -93,7 +93,7 @@ func reduce_bird_count():
 func spawn_wave():
 	_wave_label.text = "Wave " + str(difficulty_level)
 	$AnimationPlayer.play("WaveLabelPulse")
-	for _x in difficulty_level*3:
+	for _x in 2+difficulty_level*2:
 		bird_count += 1
 		var bird:Bird = _Bird.instance()
 		var _error = bird.connect("game_over", self, "game_over")
@@ -114,5 +114,5 @@ func _on_MainMenuButton_pressed():
 	var _ignored = get_tree().change_scene("res://src/screens/MainMenu.tscn")
 
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	_thrower.play("Idle")
