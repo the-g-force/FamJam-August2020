@@ -1,4 +1,3 @@
-tool
 class_name Crumb
 extends Node2D
 
@@ -21,7 +20,7 @@ func _ready():
 
 
 func _draw():
-	draw_circle(Vector2.ZERO, 1, color)
+	draw_circle(Vector2.ZERO, 2, color)
 
 
 func _on_LifetimeTimer_timeout():
