@@ -104,6 +104,8 @@ func spawn_wave():
 
 
 func game_over():
+	for bird in _birds_node.get_children():
+		bird.fly_away()
 	_game_over_ui.show()
 	_waves_completed_label.text = "You fed " + str(difficulty_level-1) + \
 	(" flock!" if difficulty_level-1 == 1 else " flocks!")

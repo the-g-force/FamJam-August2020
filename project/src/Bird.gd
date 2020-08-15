@@ -63,3 +63,7 @@ func _process(delta:float):
 		if not get_viewport_rect().has_point(position):
 			queue_free()
 	update()
+
+
+func fly_away() -> void: 
+	state = State.FLYING
