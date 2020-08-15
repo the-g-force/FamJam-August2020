@@ -21,7 +21,17 @@ _global_script_class_icons={
 [application]
 
 config/name="FamJam-August2020"
+run/main_scene="res://src/screens/SplashScreen.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Jukebox="*res://src/Jukebox.tscn"
+
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [rendering]
 
