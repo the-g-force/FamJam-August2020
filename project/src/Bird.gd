@@ -54,11 +54,10 @@ func _process(delta:float):
 		var velocity = direction*speed
 		var _error = move_and_collide(velocity*delta)
 	if state == State.FLYING:
-		var dir = Vector2(1,0)
+		var dir = (position - middle_of_screen).normalized()
 		var velocity = dir*speed
 		rotation = dir.angle()
-		if position.x > middle_of_screen.x*2:
-			queue_free()
 		var _error = move_and_collide(velocity*delta)
+		if not get_viewport_rect().has_point(position):
+			queue_free()
 	update()
-
