@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/Bird.gd" type="Script" id=1]
 [ext_resource path="res://assets/bird-yellow.png" type="Texture" id=2]
 [ext_resource path="res://assets/bird-blue.png" type="Texture" id=3]
 [ext_resource path="res://assets/bird-brown.png" type="Texture" id=4]
+[ext_resource path="res://assets/bird-yellow-med.png" type="Texture" id=5]
+[ext_resource path="res://assets/bird-yellow-thin.png" type="Texture" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -17,9 +19,9 @@ animations = [ {
 "name": "12",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "02",
+"name": "20",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
@@ -27,22 +29,12 @@ animations = [ {
 "name": "13",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "03",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "20",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "00",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "01",
 "speed": 5.0
@@ -70,6 +62,16 @@ animations = [ {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "21",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "02",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "03",
 "speed": 5.0
 } ]
 

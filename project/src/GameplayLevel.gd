@@ -16,9 +16,11 @@ var _pressed := false
 var difficulty_level := 1
 var bird_count := 0
 var _seconds : float = 0
+var gameover := false
 
 onready var _crumbs = $Crumbs
 onready var _crumbs_label = $Control/Label
+onready var _GameOverLabel : Label = $GameOver
 onready var _crumbs_progress : ProgressBar = $Control/ProgressBar
 # The node whose location the crumbs spawn from
 onready var _hand : Node2D = $Hand
@@ -46,9 +48,12 @@ func _crumbs_to_throw() -> float:
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if event.is_pressed():
-			_pressed = true
-			_seconds = 0
-		else:
+			if not gameover:
+				_pressed = true
+				_seconds = 0
+			else:
+				get_tree().change_scene("res://src/screens/MainMenu.tscn")
+		elif not gameover:
 			_pressed = false
 			_throw_crumbs()
 
@@ -95,4 +100,6 @@ func spawn_wave():
 
 
 func game_over():
-	print("Game Over")
+	_GameOverLabel.show()
+	_GameOverLabel.text = "Game Over! \n You fed " + str(difficulty_level) + (" flock!" if difficulty_level == 1 else " flocks!")
+	gameover = true

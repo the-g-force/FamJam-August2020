@@ -70,3 +70,14 @@ __meta__ = {
 anims/WaveLabelPulse = SubResource( 1 )
 
 [node name="Birds" type="Node" parent="."]
+
+[node name="GameOver" type="Label" parent="."]
+visible = false
+margin_left = 272.0
+margin_top = 144.0
+margin_right = 346.0
+margin_bottom = 158.0
+text = "Game OVer"
+__meta__ = {
+"_edit_use_anchors_": false
+}
