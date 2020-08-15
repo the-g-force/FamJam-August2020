@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/screens/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Fredericka_the_Great/FrederickatheGreat-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/bird-brown-fat.png" type="Texture" id=3]
+[ext_resource path="res://assets/bird-yellow-fat.png" type="Texture" id=4]
+[ext_resource path="res://assets/bird-blue-fat.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 75
@@ -78,5 +81,17 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="bird-blue-fat" type="Sprite" parent="."]
+position = Vector2( 171.789, 391.105 )
+texture = ExtResource( 5 )
+
+[node name="bird-yellow-fat" type="Sprite" parent="."]
+position = Vector2( 460.211, 445.842 )
+texture = ExtResource( 4 )
+
+[node name="bird-brown-fat" type="Sprite" parent="."]
+position = Vector2( 447.579, 287.947 )
+texture = ExtResource( 3 )
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer/FullscreenToggle" to="." method="_on_FullscreenToggle_toggled"]
