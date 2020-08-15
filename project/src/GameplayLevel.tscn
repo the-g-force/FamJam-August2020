@@ -13,7 +13,7 @@
 [ext_resource path="res://assets/guy.png" type="Texture" id=11]
 [ext_resource path="res://assets/forearm.png" type="Texture" id=12]
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=1]
 resource_name = "Idle"
 tracks/0/type = "value"
 tracks/0/path = NodePath("forearm:rotation_degrees")
@@ -28,7 +28,7 @@ tracks/0/keys = {
 "values": [ 33.6443 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=2]
 resource_name = "Throw"
 length = 0.5
 tracks/0/type = "value"
@@ -44,21 +44,21 @@ tracks/0/keys = {
 "values": [ 41.567, 158.366, 41.567 ]
 }
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 36
 font_data = ExtResource( 6 )
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 1, 0.866667, 0, 1 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.305882, 0.588235, 0.32549, 1 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=6]
 size = 48
 font_data = ExtResource( 7 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=7]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveLabel:modulate")
@@ -73,15 +73,15 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=8]
 size = 32
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=9]
 size = 28
 font_data = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=10]
 size = 24
 font_data = ExtResource( 8 )
 
@@ -119,8 +119,8 @@ texture = ExtResource( 12 )
 offset = Vector2( -6.32465, -26.9742 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="guy"]
-anims/Idle = SubResource( 9 )
-anims/Throw = SubResource( 10 )
+anims/Idle = SubResource( 1 )
+anims/Throw = SubResource( 2 )
 
 [node name="Crumbs" type="Node" parent="."]
 
@@ -138,7 +138,7 @@ margin_left = 127.0
 margin_top = -5.0
 margin_right = 183.0
 margin_bottom = 31.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 0.984314, 0.0235294, 1 )
 text = "X"
 __meta__ = {
@@ -150,8 +150,8 @@ margin_left = -27.5026
 margin_top = -10.4648
 margin_right = 119.497
 margin_bottom = 32.5352
-custom_styles/fg = SubResource( 2 )
-custom_styles/bg = SubResource( 3 )
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 5 )
 max_value = 1.0
 percent_visible = false
 __meta__ = {
@@ -159,11 +159,11 @@ __meta__ = {
 }
 
 [node name="WaveLabel" type="Label" parent="."]
-margin_left = 222.803
-margin_top = 353.07
-margin_right = 382.803
-margin_bottom = 401.07
-custom_fonts/font = SubResource( 4 )
+margin_left = 214.327
+margin_top = 486.562
+margin_right = 374.327
+margin_bottom = 534.562
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.933333, 0.956863, 0.917647, 1 )
 text = "Wave N"
 align = 1
@@ -172,7 +172,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/WaveLabelPulse = SubResource( 5 )
+anims/WaveLabelPulse = SubResource( 7 )
 
 [node name="Birds" type="Node" parent="."]
 
@@ -187,7 +187,7 @@ margin_left = 128.972
 margin_top = 120.0
 margin_right = 483.972
 margin_bottom = 152.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "The Birds Got Your Food!"
 __meta__ = {
@@ -199,7 +199,7 @@ margin_left = 208.432
 margin_top = 157.773
 margin_right = 413.432
 margin_bottom = 185.773
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "You Fed N Flocks"
 __meta__ = {
@@ -211,7 +211,7 @@ margin_left = 186.183
 margin_top = 485.147
 margin_right = 425.183
 margin_bottom = 515.147
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 10 )
 text = "Return to Main Menu"
 __meta__ = {
 "_edit_use_anchors_": false
