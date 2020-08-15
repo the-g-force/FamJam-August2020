@@ -1,5 +1,9 @@
 tool
+class_name Crumb
 extends Node2D
+
+# Indicates if this crumb is in the air or on the ground
+var on_ground := true
 
 onready var _radius = $CollisionShape2D.shape.radius
 
