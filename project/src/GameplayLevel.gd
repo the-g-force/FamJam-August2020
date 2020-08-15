@@ -112,7 +112,3 @@ func game_over():
 
 func _on_MainMenuButton_pressed():
 	var _ignored = get_tree().change_scene("res://src/screens/MainMenu.tscn")
-
-
-func _on_AnimationPlayer_animation_finished(_anim_name):
-	_thrower.play("Idle")

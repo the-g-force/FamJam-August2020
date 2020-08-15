@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/GameplayLevel.gd" type="Script" id=1]
 [ext_resource path="res://assets/food-grapes.png" type="Texture" id=2]
@@ -13,26 +13,11 @@
 [ext_resource path="res://assets/guy.png" type="Texture" id=11]
 [ext_resource path="res://assets/forearm.png" type="Texture" id=12]
 
-[sub_resource type="Animation" id=1]
-resource_name = "Idle"
-tracks/0/type = "value"
-tracks/0/path = NodePath("forearm:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 33.6443 ]
-}
-
 [sub_resource type="Animation" id=2]
 resource_name = "Throw"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("forearm:rotation_degrees")
+tracks/0/path = NodePath("Forearm:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -41,7 +26,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 41.567, 158.366, 41.567 ]
+"values": [ -22.1506, 55.4125, -22.1506 ]
 }
 
 [sub_resource type="DynamicFont" id=3]
@@ -112,14 +97,13 @@ texture = ExtResource( 11 )
 position = Vector2( 72, -80 )
 rotation = -0.0717808
 
-[node name="forearm" type="Sprite" parent="guy"]
-position = Vector2( 56, -24 )
-rotation = 0.725481
+[node name="Forearm" type="Sprite" parent="guy"]
+position = Vector2( 64.863, -16.3862 )
+rotation = -0.386601
 texture = ExtResource( 12 )
-offset = Vector2( -6.32465, -26.9742 )
+offset = Vector2( -15.2484, -24.1973 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="guy"]
-anims/Idle = SubResource( 1 )
 anims/Throw = SubResource( 2 )
 
 [node name="Crumbs" type="Node" parent="."]
@@ -219,5 +203,4 @@ __meta__ = {
 
 [node name="Feeding" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
-[connection signal="animation_finished" from="guy/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="pressed" from="EndGameMessage/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
