@@ -1,9 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/screens/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Fredericka_the_Great/FrederickatheGreat-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/fonts/Overpass/Overpass-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/fonts/Overpass/Overpass-Black.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/grass.png" type="Texture" id=5]
+[ext_resource path="res://assets/bird-yellow-fat.png" type="Texture" id=6]
+[ext_resource path="res://assets/food-sandwich.png" type="Texture" id=7]
+[ext_resource path="res://assets/tablecloth.png" type="Texture" id=8]
+[ext_resource path="res://assets/bird-brown-fat.png" type="Texture" id=9]
+[ext_resource path="res://assets/bird-blue-fat.png" type="Texture" id=10]
+[ext_resource path="res://assets/drink.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -17,11 +24,13 @@ font_data = ExtResource( 3 )
 size = 75
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=4]
+size = 21
+font_data = ExtResource( 4 )
+
 [node name="MainMenu" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -1.33484
-margin_right = -1.33484
+margin_right = 600.0
+margin_bottom = 600.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -50,7 +59,7 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 100.0
+margin_top = 58.0
 margin_right = 164.0
 margin_bottom = 98.0
 
@@ -84,7 +93,7 @@ anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -232.0
 margin_right = 233.0
-margin_bottom = 302.0
+margin_bottom = 206.0
 custom_fonts/font = SubResource( 3 )
 text = "Hangry Birds"
 align = 1
@@ -92,5 +101,63 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Control2" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="grass" type="Sprite" parent="Control2"]
+position = Vector2( 300.517, 300.019 )
+z_index = -5
+texture = ExtResource( 5 )
+
+[node name="tablecloth" type="Sprite" parent="Control2/grass"]
+position = Vector2( 5.80746, -9.66684 )
+texture = ExtResource( 8 )
+
+[node name="food-sandwich" type="Sprite" parent="Control2/grass"]
+position = Vector2( 61.0557, -67.3706 )
+rotation = 0.174533
+texture = ExtResource( 7 )
+
+[node name="drink" type="Sprite" parent="Control2/grass"]
+position = Vector2( -22.4515, -67.3496 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -154.5
+margin_top = 174.966
+margin_right = 154.5
+margin_bottom = 221.966
+custom_fonts/font = SubResource( 4 )
+text = "Protect your lunch by throwing food to the birds."
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bird-brown-fat" type="Sprite" parent="."]
+position = Vector2( 103.748, 403.304 )
+rotation = 0.349066
+texture = ExtResource( 9 )
+
+[node name="bird-yellow-fat" type="Sprite" parent="."]
+position = Vector2( 506.446, 443.819 )
+rotation = -1.16937
+texture = ExtResource( 6 )
+
+[node name="bird-blue-fat" type="Sprite" parent="."]
+position = Vector2( 457.336, 226.51 )
+rotation = 3.49066
+texture = ExtResource( 10 )
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="toggled" from="VBoxContainer/HBoxContainer/FullscreenToggle" to="." method="_on_FullscreenToggle_toggled"]
