@@ -13,32 +13,36 @@ script = ExtResource( 1 )
 [node name="Crumbs" type="Node" parent="."]
 
 [node name="Control" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 295.571
+margin_top = 304.056
+margin_right = 335.571
+margin_bottom = 344.056
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Control"]
-margin_left = 480.44
-margin_top = 203.355
-margin_right = 520.44
-margin_bottom = 217.355
+margin_left = -23.0201
+margin_top = -13.0197
+margin_right = 16.9799
+margin_bottom = 0.980301
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ProgressBar" type="ProgressBar" parent="Control"]
-margin_left = 431.682
-margin_top = 224.76
-margin_right = 584.682
-margin_bottom = 238.76
+margin_left = -71.7781
+margin_top = 8.3853
+margin_right = 81.2219
+margin_bottom = 22.3853
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Path2D" type="Path2D" parent="."]
+position = Vector2( -212.132, 1.41418 )
 curve = SubResource( 1 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
