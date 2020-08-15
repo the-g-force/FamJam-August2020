@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/GameplayLevel.gd" type="Script" id=1]
+[ext_resource path="res://assets/food-grapes.png" type="Texture" id=2]
+[ext_resource path="res://assets/food-sandwich.png" type="Texture" id=3]
+[ext_resource path="res://assets/tablecloth.png" type="Texture" id=4]
+[ext_resource path="res://assets/grass.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "WaveLabelPulse"
@@ -21,6 +25,22 @@ tracks/0/keys = {
 [node name="GameplayLevel" type="Node2D"]
 script = ExtResource( 1 )
 
+[node name="grass" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+centered = false
+
+[node name="tablecloth" type="Sprite" parent="grass"]
+position = Vector2( 288, 312 )
+texture = ExtResource( 4 )
+
+[node name="food-sandwich" type="Sprite" parent="grass/tablecloth"]
+position = Vector2( 24, -24 )
+texture = ExtResource( 3 )
+
+[node name="food-grapes" type="Sprite" parent="grass/tablecloth"]
+position = Vector2( -40, -24 )
+texture = ExtResource( 2 )
+
 [node name="Crumbs" type="Node" parent="."]
 
 [node name="Control" type="Control" parent="."]
@@ -38,6 +58,7 @@ margin_left = -23.0201
 margin_top = -13.0197
 margin_right = 16.9799
 margin_bottom = 0.980301
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -60,6 +81,7 @@ margin_left = 280.014
 margin_top = 237.588
 margin_right = 320.014
 margin_bottom = 251.588
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Wave N"
 align = 1
 __meta__ = {
@@ -79,6 +101,7 @@ margin_left = 272.0
 margin_top = 144.0
 margin_right = 346.0
 margin_bottom = 158.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Game OVer"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -89,6 +112,7 @@ margin_left = 184.0
 margin_top = 168.0
 margin_right = 433.0
 margin_bottom = 182.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "click anywhere to go to the main menu"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -99,6 +123,7 @@ margin_left = 272.0
 margin_top = 120.0
 margin_right = 346.0
 margin_bottom = 134.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Game Over"
 __meta__ = {
 "_edit_use_anchors_": false
