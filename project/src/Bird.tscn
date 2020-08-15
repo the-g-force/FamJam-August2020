@@ -25,16 +25,6 @@ animations = [ {
 "name": "12",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "22",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "10",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "03",
@@ -50,24 +40,9 @@ animations = [ {
 "name": "23",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ) ],
-"loop": true,
-"name": "21",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "00",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "02",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "01",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 8 ) ],
@@ -75,9 +50,34 @@ animations = [ {
 "name": "11",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "22",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "00",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "21",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "13",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "01",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "10",
 "speed": 5.0
 } ]
 
@@ -101,8 +101,8 @@ animation = "23"
 
 [node name="Eating0" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )
-volume_db = 10.0
+volume_db = 24.0
 
 [node name="Eating1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 12 )
-volume_db = 10.0
+volume_db = 24.0
