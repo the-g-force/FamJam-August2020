@@ -36,3 +36,4 @@ __meta__ = {
 
 [node name="Bird" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1.44208, -5.90622 )
+[connection signal="game_over" from="Bird" to="." method="_on_Bird_game_over"]

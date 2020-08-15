@@ -1,16 +1,23 @@
 extends KinematicBody2D
 
 enum State {EATING, WALKING}
-export var speed : int = 200
+export var speed : int = 100
 
 var target
 var state = State.WALKING
 var crumbs_eaten := 0
+var middle_of_screen : Vector2
 var destination : Vector2
+
+signal game_over
+
+func _ready():
+	middle_of_screen = get_viewport_rect().size/2
+
 
 func _process(delta:float):
 	if state == State.WALKING:
-		destination = get_viewport_rect().size/2
+		destination = middle_of_screen
 		var crumbs = $Sensor.get_overlapping_areas()
 		for crumb in crumbs:
 			if crumb.on_ground:
@@ -26,6 +33,8 @@ func _process(delta:float):
 				yield(get_tree().create_timer(0.5), "timeout")
 				crumbs_eaten += 1
 				state = State.WALKING
+			if destination == middle_of_screen:
+				emit_signal("game_over")
 		var velocity = direction*speed
 		var _error = move_and_collide(velocity*delta)
 		update()

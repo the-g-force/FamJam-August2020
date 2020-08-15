@@ -62,3 +62,7 @@ func _throw_crumbs():
 func _on_tween_complete(tween:Tween, crumb:Crumb):
 	crumb.on_ground = true
 	tween.queue_free()
+
+
+func _on_Bird_game_over():
+	print("Game Over")
