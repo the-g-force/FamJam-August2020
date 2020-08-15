@@ -2,7 +2,6 @@ extends Node2D
 
 const _Crumb = preload("res://src/Crumb.tscn")
 const _Bird = preload("res://src/Bird.tscn")
-const _throw_origin = Vector2(512,300)
 
 # How long is the crumb "in the air"?
 export var toss_duration := 1.1
@@ -20,6 +19,8 @@ onready var _crumbs = $Crumbs
 onready var _crumbs_label = $Control/Label
 onready var _crumbs_progress : ProgressBar = $Control/ProgressBar
 onready var _birdspawnlocation : PathFollow2D = $Path2D/PathFollow2D
+# The node whose location the crumbs spawn from
+onready var _hand : Node2D = $Hand
 
 func _ready():
 	randomize()
@@ -57,12 +58,12 @@ func _throw_crumbs():
 		crumb.on_ground = false
 		_crumbs.add_child(crumb)
 		var target = get_global_mouse_position() \
-		+ Vector2(rand_range(-crumbs_spread_radius, crumbs_spread_radius), \
+				+ Vector2(rand_range(-crumbs_spread_radius, crumbs_spread_radius), \
 		 			rand_range(-crumbs_spread_radius, crumbs_spread_radius))
 		
 		var tween = Tween.new()
 		add_child(tween)
-		tween.interpolate_property(crumb, "position", _throw_origin, target, toss_duration, Tween.TRANS_QUAD, Tween.EASE_OUT)
+		tween.interpolate_property(crumb, "position", _hand.get_global_transform().origin, target, toss_duration, Tween.TRANS_QUAD, Tween.EASE_OUT)
 		tween.start()
 		tween.connect("tween_all_completed", self, '_on_tween_complete', [tween, crumb], CONNECT_ONESHOT)
 
@@ -77,6 +78,7 @@ func reduce_bird_count():
 	if bird_count == 0:
 		difficulty_level += 1
 		spawn_wave()
+
 
 func spawn_wave():
 	for _x in difficulty_level*3:
