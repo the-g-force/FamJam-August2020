@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/GameplayLevel.gd" type="Script" id=1]
 [ext_resource path="res://assets/food-grapes.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://assets/grass.png" type="Texture" id=5]
 [ext_resource path="res://assets/fonts/Overpass/Overpass-Black.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://assets/fonts/Overpass/Overpass-BlackItalic.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/fonts/Overpass/Overpass-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://assets/fonts/Overpass/Overpass-Italic.ttf" type="DynamicFontData" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 36
@@ -36,6 +38,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+
+[sub_resource type="DynamicFont" id=6]
+size = 32
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 28
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 24
+font_data = ExtResource( 8 )
 
 [node name="GameplayLevel" type="Node2D"]
 script = ExtResource( 1 )
@@ -113,38 +127,44 @@ anims/WaveLabelPulse = SubResource( 2 )
 
 [node name="Birds" type="Node" parent="."]
 
-[node name="EndGameMessage" type="Node2D" parent="."]
+[node name="EndGameMessage" type="Control" parent="."]
 visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GameOver" type="Label" parent="EndGameMessage"]
-margin_left = 272.0
-margin_top = 144.0
-margin_right = 346.0
-margin_bottom = 158.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Game OVer"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ClickForMenu" type="Label" parent="EndGameMessage"]
-margin_left = 184.0
-margin_top = 168.0
-margin_right = 433.0
-margin_bottom = 182.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "click anywhere to go to the main menu"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="GameOver3" type="Label" parent="EndGameMessage"]
-margin_left = 272.0
+margin_left = 128.972
 margin_top = 120.0
-margin_right = 346.0
-margin_bottom = 134.0
+margin_right = 483.972
+margin_bottom = 152.0
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Game Over"
+text = "The Birds Got Your Food!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="WavesCompleted" type="Label" parent="EndGameMessage"]
+margin_left = 208.432
+margin_top = 157.773
+margin_right = 413.432
+margin_bottom = 185.773
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "You Fed N Flocks"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenuButton" type="Button" parent="EndGameMessage"]
+margin_left = 186.183
+margin_top = 485.147
+margin_right = 425.183
+margin_bottom = 515.147
+custom_fonts/font = SubResource( 8 )
+text = "Return to Main Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="EndGameMessage/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]

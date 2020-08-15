@@ -20,8 +20,8 @@ var gameover := false
 
 onready var _crumbs = $Crumbs
 onready var _crumbs_label = $Control/Label
-onready var _GameOverLabel : Label = $EndGameMessage/GameOver
-onready var _GameOverMessage : Node2D = $EndGameMessage
+onready var _waves_completed_label : Label = $EndGameMessage/WavesCompleted
+onready var _game_over_ui : Node = $EndGameMessage
 onready var _crumbs_progress : ProgressBar = $Control/ProgressBar
 # The node whose location the crumbs spawn from
 onready var _hand : Node2D = $Hand
@@ -52,10 +52,6 @@ func _input(event):
 			if not gameover:
 				_pressed = true
 				_seconds = 0
-			else:
-				_pressed = false
-				_throw_crumbs()
-				var _error = get_tree().change_scene("res://src/screens/MainMenu.tscn")
 		elif not gameover:
 			_pressed = false
 			_throw_crumbs()
@@ -103,7 +99,11 @@ func spawn_wave():
 
 
 func game_over():
-	_GameOverMessage.show()
-	_GameOverLabel.text = "You fed " + str(difficulty_level) + \
+	_game_over_ui.show()
+	_waves_completed_label.text = "You fed " + str(difficulty_level) + \
 	(" flock!" if difficulty_level == 1 else " flocks!")
 	gameover = true
+
+
+func _on_MainMenuButton_pressed():
+	var _ignored = get_tree().change_scene("res://src/screens/MainMenu.tscn")
