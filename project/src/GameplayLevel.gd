@@ -21,6 +21,7 @@ onready var _crumbs_progress : ProgressBar = $Control/ProgressBar
 onready var _birdspawnlocation : PathFollow2D = $Path2D/PathFollow2D
 # The node whose location the crumbs spawn from
 onready var _hand : Node2D = $Hand
+onready var _wave_label : Label = $WaveLabel
 
 func _ready():
 	spawn_wave()
@@ -80,6 +81,8 @@ func reduce_bird_count():
 
 
 func spawn_wave():
+	_wave_label.text = "Wave " + str(difficulty_level)
+	$AnimationPlayer.play("WaveLabelPulse")
 	for _x in difficulty_level*3:
 		bird_count += 1
 		var bird:Bird = _Bird.instance()

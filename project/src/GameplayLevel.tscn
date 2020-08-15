@@ -1,10 +1,26 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/GameplayLevel.gd" type="Script" id=1]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 512, 0, 0, 0, 0, 0, 432, 8, 0, 0, 0, 0, 360, 40, 0, 0, 0, 0, 304, 88, 0, 0, 0, 0, 256, 144, 0, 0, 0, 0, 224, 216, 0, 0, 0, 0, 216, 296, 0, 0, 0, 0, 224, 376, 0, 0, 0, 0, 256, 448, 0, 0, 0, 0, 304, 520, 0, 0, 0, 0, 368, 560, 0, 0, 0, 0, 440, 592, 0, 0, 0, 0, 512, 592, 0, 0, 0, 0, 600, 584, 0, 0, 0, 0, 656, 560, 0, 0, 0, 0, 720, 512, 0, 0, 0, 0, 768, 448, 0, 0, 0, 0, 800, 384, 0, 0, 0, 0, 808, 304, 0, 0, 0, 0, 808, 240, 0, 0, 0, 0, 768, 152, 0, 0, 0, 0, 720, 80, 0, 0, 0, 0, 640, 40, 0, 0, 0, 0, 576, 8, 0, 0, 0, 0, 512, 0 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "WaveLabelPulse"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("WaveLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.5, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="GameplayLevel" type="Node2D"]
@@ -51,3 +67,17 @@ rotation = 3.04192
 
 [node name="Hand" type="Node2D" parent="."]
 position = Vector2( 305.47, 315.37 )
+
+[node name="WaveLabel" type="Label" parent="."]
+margin_left = 280.014
+margin_top = 237.588
+margin_right = 320.014
+margin_bottom = 251.588
+text = "Wave N"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/WaveLabelPulse = SubResource( 2 )
