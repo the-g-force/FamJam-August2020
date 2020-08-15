@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/GameplayLevel.gd" type="Script" id=1]
 [ext_resource path="res://assets/food-grapes.png" type="Texture" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://assets/sounds/feeding.wav" type="AudioStream" id=10]
 [ext_resource path="res://assets/guy.png" type="Texture" id=11]
 [ext_resource path="res://assets/forearm.png" type="Texture" id=12]
-[ext_resource path="res://assets/player.png" type="Texture" id=13]
 
 [sub_resource type="Animation" id=9]
 resource_name = "Idle"
@@ -26,11 +25,12 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 82.7171 ]
+"values": [ 33.6443 ]
 }
 
 [sub_resource type="Animation" id=10]
 resource_name = "Throw"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("forearm:rotation_degrees")
 tracks/0/interp = 1
@@ -38,10 +38,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 158.366, 41.567 ]
+"values": [ 41.567, 158.366, 41.567 ]
 }
 
 [sub_resource type="DynamicFont" id=1]
@@ -109,19 +109,14 @@ position = Vector2( 312, 376 )
 texture = ExtResource( 11 )
 
 [node name="Hand" type="Node2D" parent="guy"]
-position = Vector2( 40, -48 )
+position = Vector2( 72, -80 )
 rotation = -0.0717808
 
 [node name="forearm" type="Sprite" parent="guy"]
-position = Vector2( 23.693, 5.29578 )
+position = Vector2( 56, -24 )
 rotation = 0.725481
 texture = ExtResource( 12 )
 offset = Vector2( -6.32465, -26.9742 )
-
-[node name="Hat" type="Sprite" parent="guy"]
-position = Vector2( 0, 8 )
-rotation = -0.0423071
-texture = ExtResource( 13 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="guy"]
 anims/Idle = SubResource( 9 )
