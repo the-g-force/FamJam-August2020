@@ -36,7 +36,7 @@ func _process(delta):
 	if _pressed:
 		_seconds += delta
 		_crumbs_label.text = str(_crumbs_to_throw())
-		_crumbs_progress.value = fmod(_seconds, crumbs_load_rate) / crumbs_load_rate * 100
+		_crumbs_progress.value = fmod(_seconds, crumbs_load_rate) / crumbs_load_rate
 	else:
 		_crumbs_label.text = ''
 		_crumbs_progress.value = 0

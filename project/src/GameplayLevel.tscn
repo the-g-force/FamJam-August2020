@@ -1,13 +1,28 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/GameplayLevel.gd" type="Script" id=1]
 [ext_resource path="res://assets/food-grapes.png" type="Texture" id=2]
 [ext_resource path="res://assets/food-sandwich.png" type="Texture" id=3]
 [ext_resource path="res://assets/tablecloth.png" type="Texture" id=4]
 [ext_resource path="res://assets/grass.png" type="Texture" id=5]
+[ext_resource path="res://assets/fonts/Overpass/Overpass-Black.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/fonts/Overpass/Overpass-BlackItalic.ttf" type="DynamicFontData" id=7]
 
-[sub_resource type="Animation" id=1]
-resource_name = "WaveLabelPulse"
+[sub_resource type="DynamicFont" id=1]
+size = 36
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 0.866667, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.305882, 0.588235, 0.32549, 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 48
+font_data = ExtResource( 7 )
+
+[sub_resource type="Animation" id=2]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveLabel:modulate")
@@ -44,30 +59,34 @@ texture = ExtResource( 2 )
 [node name="Crumbs" type="Node" parent="."]
 
 [node name="Control" type="Control" parent="."]
-margin_left = 295.571
-margin_top = 304.056
-margin_right = 335.571
-margin_bottom = 344.056
+margin_left = 244.717
+margin_top = 563.624
+margin_right = 284.717
+margin_bottom = 603.624
 __meta__ = {
-"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Control"]
-margin_left = -23.0201
-margin_top = -13.0197
-margin_right = 16.9799
-margin_bottom = 0.980301
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+margin_left = 127.0
+margin_top = -5.0
+margin_right = 183.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0.984314, 0.0235294, 1 )
+text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ProgressBar" type="ProgressBar" parent="Control"]
-margin_left = -71.7781
-margin_top = 8.3853
-margin_right = 81.2219
-margin_bottom = 22.3853
+margin_left = -27.5026
+margin_top = -10.4648
+margin_right = 119.497
+margin_bottom = 32.5352
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
+max_value = 1.0
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -77,11 +96,12 @@ __meta__ = {
 position = Vector2( 305.47, 315.37 )
 
 [node name="WaveLabel" type="Label" parent="."]
-margin_left = 280.014
-margin_top = 237.588
-margin_right = 320.014
-margin_bottom = 251.588
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+margin_left = 222.803
+margin_top = 353.07
+margin_right = 382.803
+margin_bottom = 401.07
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.933333, 0.956863, 0.917647, 1 )
 text = "Wave N"
 align = 1
 __meta__ = {
@@ -89,7 +109,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/WaveLabelPulse = SubResource( 1 )
+anims/WaveLabelPulse = SubResource( 2 )
 
 [node name="Birds" type="Node" parent="."]
 
