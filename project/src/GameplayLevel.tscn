@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/GameplayLevel.gd" type="Script" id=1]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "WaveLabelPulse"
 length = 2.0
 tracks/0/type = "value"
@@ -67,4 +67,6 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/WaveLabelPulse = SubResource( 2 )
+anims/WaveLabelPulse = SubResource( 1 )
+
+[node name="Birds" type="Node" parent="."]

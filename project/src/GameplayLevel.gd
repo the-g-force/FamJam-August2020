@@ -23,6 +23,7 @@ onready var _crumbs_progress : ProgressBar = $Control/ProgressBar
 # The node whose location the crumbs spawn from
 onready var _hand : Node2D = $Hand
 onready var _wave_label : Label = $WaveLabel
+onready var _birds_node = $Birds
 
 func _ready():
 	spawn_wave()
@@ -89,7 +90,7 @@ func spawn_wave():
 		var _error = bird.connect("game_over", self, "game_over")
 		var _error2 = bird.connect("fed", self, "reduce_bird_count")
 		bird.position = Vector2(300,300) + Vector2(spawn_radius,0).rotated(randf()*PI*2)
-		add_child(bird)
+		_birds_node.add_child(bird)
 
 
 
