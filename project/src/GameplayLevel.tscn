@@ -8,12 +8,12 @@
 [ext_resource path="res://assets/fonts/Overpass/Overpass-Black.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://assets/fonts/Overpass/Overpass-BlackItalic.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/fonts/Overpass/Overpass-Regular.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://assets/fonts/Overpass/Overpass-Italic.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://assets/fonts/Overpass/Overpass-BoldItalic.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://assets/sounds/feeding.wav" type="AudioStream" id=10]
 [ext_resource path="res://assets/guy.png" type="Texture" id=11]
 [ext_resource path="res://assets/forearm.png" type="Texture" id=12]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "Throw"
 length = 0.5
 tracks/0/type = "value"
@@ -29,21 +29,21 @@ tracks/0/keys = {
 "values": [ -22.1506, 55.4125, -22.1506 ]
 }
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 36
 font_data = ExtResource( 6 )
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 1, 0.866667, 0, 1 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.305882, 0.588235, 0.32549, 1 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 size = 48
 font_data = ExtResource( 7 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("WaveLabel:modulate")
@@ -58,16 +58,18 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=7]
 size = 32
-font_data = ExtResource( 7 )
+font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=8]
 size = 28
 font_data = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=9]
 size = 24
+extra_spacing_top = 5
+extra_spacing_bottom = 5
 font_data = ExtResource( 8 )
 
 [node name="GameplayLevel" type="Node2D"]
@@ -104,7 +106,7 @@ texture = ExtResource( 12 )
 offset = Vector2( -15.2484, -24.1973 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="guy"]
-anims/Throw = SubResource( 2 )
+anims/Throw = SubResource( 1 )
 
 [node name="Crumbs" type="Node" parent="."]
 
@@ -122,7 +124,7 @@ margin_left = 127.0
 margin_top = -5.0
 margin_right = 183.0
 margin_bottom = 31.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0.984314, 0.0235294, 1 )
 text = "X"
 __meta__ = {
@@ -134,8 +136,8 @@ margin_left = -27.5026
 margin_top = -10.4648
 margin_right = 119.497
 margin_bottom = 32.5352
-custom_styles/fg = SubResource( 4 )
-custom_styles/bg = SubResource( 5 )
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
 max_value = 1.0
 percent_visible = false
 __meta__ = {
@@ -147,7 +149,7 @@ margin_left = 214.327
 margin_top = 486.562
 margin_right = 374.327
 margin_bottom = 534.562
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.933333, 0.956863, 0.917647, 1 )
 text = "Wave N"
 align = 1
@@ -156,7 +158,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/WaveLabelPulse = SubResource( 7 )
+anims/WaveLabelPulse = SubResource( 6 )
 
 [node name="Birds" type="Node" parent="."]
 
@@ -171,8 +173,8 @@ margin_left = 128.972
 margin_top = 120.0
 margin_right = 483.972
 margin_bottom = 152.0
-custom_fonts/font = SubResource( 8 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.0976562, 0.0587463, 0.0587463, 1 )
 text = "The Birds Got Your Food!"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -183,8 +185,8 @@ margin_left = 208.432
 margin_top = 157.773
 margin_right = 413.432
 margin_bottom = 185.773
-custom_fonts/font = SubResource( 9 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.0976562, 0.0587463, 0.0587463, 1 )
 text = "You Fed N Flocks"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -195,7 +197,7 @@ margin_left = 186.183
 margin_top = 485.147
 margin_right = 425.183
 margin_bottom = 515.147
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 9 )
 text = "Return to Main Menu"
 __meta__ = {
 "_edit_use_anchors_": false
