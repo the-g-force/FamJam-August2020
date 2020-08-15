@@ -1,7 +1,11 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/GameplayLevel.gd" type="Script" id=1]
-[ext_resource path="res://src/Bird.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 512, 0, 0, 0, 0, 0, 432, 8, 0, 0, 0, 0, 360, 40, 0, 0, 0, 0, 304, 88, 0, 0, 0, 0, 256, 144, 0, 0, 0, 0, 224, 216, 0, 0, 0, 0, 216, 296, 0, 0, 0, 0, 224, 376, 0, 0, 0, 0, 256, 448, 0, 0, 0, 0, 304, 520, 0, 0, 0, 0, 368, 560, 0, 0, 0, 0, 440, 592, 0, 0, 0, 0, 512, 592, 0, 0, 0, 0, 600, 584, 0, 0, 0, 0, 656, 560, 0, 0, 0, 0, 720, 512, 0, 0, 0, 0, 768, 448, 0, 0, 0, 0, 800, 384, 0, 0, 0, 0, 808, 304, 0, 0, 0, 0, 808, 240, 0, 0, 0, 0, 768, 152, 0, 0, 0, 0, 720, 80, 0, 0, 0, 0, 640, 40, 0, 0, 0, 0, 576, 8, 0, 0, 0, 0, 512, 0 )
+}
 
 [node name="GameplayLevel" type="Node2D"]
 script = ExtResource( 1 )
@@ -34,6 +38,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Bird" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1.44208, -5.90622 )
-[connection signal="game_over" from="Bird" to="." method="_on_Bird_game_over"]
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 512, 0 )
+rotation = 3.04192

@@ -1,6 +1,7 @@
 extends Node2D
 
 const _Crumb = preload("res://src/Crumb.tscn")
+const _Bird = preload("res://src/Bird.tscn")
 const _throw_origin = Vector2(512,300)
 
 # How long is the crumb "in the air"?
@@ -11,11 +12,23 @@ export var crumbs_load_rate : float = 0.5
 export var crumbs_spread_radius : float = 20
 
 var _pressed := false
+var difficulty_level := 1
 var _seconds : float = 0
 
 onready var _crumbs = $Crumbs
 onready var _crumbs_label = $Control/Label
 onready var _crumbs_progress : ProgressBar = $Control/ProgressBar
+onready var _birdspawnlocation : PathFollow2D = $Path2D/PathFollow2D
+
+func _ready():
+	randomize()
+	for _x in difficulty_level*3:
+		var bird:Bird = _Bird.instance()
+		var _error = bird.connect("game_over", self, "game_over")
+		_birdspawnlocation.offset = randi()
+		bird.position = _birdspawnlocation.position
+		add_child(bird)
+
 
 func _process(delta):
 	if _pressed:
@@ -43,7 +56,6 @@ func _input(event):
 
 func _throw_crumbs():
 	var crumbs_to_throw := _crumbs_to_throw()
-	print('Throwing ' + str(crumbs_to_throw))
 	for _x in range(_crumbs_to_throw()):
 		var crumb : Crumb = _Crumb.instance()
 		crumb.on_ground = false
@@ -64,5 +76,5 @@ func _on_tween_complete(tween:Tween, crumb:Crumb):
 	tween.queue_free()
 
 
-func _on_Bird_game_over():
+func game_over():
 	print("Game Over")

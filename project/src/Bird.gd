@@ -1,3 +1,4 @@
+class_name Bird
 extends KinematicBody2D
 
 enum State {EATING, WALKING}
@@ -20,10 +21,11 @@ func _process(delta:float):
 		destination = middle_of_screen
 		var crumbs = $Sensor.get_overlapping_areas()
 		for crumb in crumbs:
-			if crumb.on_ground:
-				destination = crumb.get_global_position()
-				target = crumb
-				break
+			if crumb is Crumb:
+				if crumb.on_ground:
+					destination = crumb.get_global_position()
+					target = crumb
+					break
 		var direction = (destination - position).normalized()
 		if (destination - position).length_squared() < 5:
 			if target != null:
